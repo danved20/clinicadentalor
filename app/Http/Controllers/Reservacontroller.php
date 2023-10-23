@@ -5,6 +5,8 @@ use App\Models\Cliente;
 use App\Models\Horario;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 use function Laravel\Prompts\alert;
 
@@ -24,8 +26,13 @@ class Reservacontroller extends Controller
      */
     public function create()
     {
-        return view('reservas.create',['horarios'=>Horario::all()],['clientes'=>Cliente::all()]);
-    }
+        $horariosDisponibles = Horario::whereNotIn('id', function($query) {
+            $query->select('id_horario')->from('reservas')->where('fecha', '<=', date('Y-m-d'));
+        })->get();
+        
+        return view('reservas.create', ['horarios' => $horariosDisponibles, 'clientes' => Cliente::all()]);
+/*         return view('reservas.create',['horarios'=>Horario::all()],['clientes'=>Cliente::all()]);
+ */    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,19 +53,15 @@ class Reservacontroller extends Controller
         $request->validate([
             'hora' => 'required',
             'nombre' => 'required',
-            'fecha' => 'required|date', // Asegúrate de que la fecha sea una fecha válida
+            'fecha' => 'required|date', 
         ]);
         $fecha = $request->input('fecha');
         $hora = $request->input('hora');
-    
-        // Verificar si la hora ya está reservada en la fecha seleccionada
         $reservaExistente = Reserva::where('fecha', $fecha)
             ->where('id_horario', $hora)
             ->first();
-        /* if ($reservaExistente) {
-            return redirect()->back()->with('error', 'Ya existe una reserva en esa fecha y hora.');      
-        } */
         if ($reservaExistente) {
+            
             return view("reservas.message", ['msg' => "error ya existe una reserva en esa fecha y hora"]);
         }
     
@@ -68,6 +71,7 @@ class Reservacontroller extends Controller
         $reserva->id_cliente = $request->input('nombre');
         $reserva->obs = $request->input('obs');
         $reserva->save();
+
     
         return view("reservas.message", ['msg' => "Registro Guardado"]);
     }
@@ -114,4 +118,21 @@ class Reservacontroller extends Controller
         $reserva->delete();
         return view("reservas.message",['msg' =>"Registro Eliminado"]);
     }
+    public function reporte()
+    {
+        $reservas = Reserva::all();
+        $horarios = Horario::all();
+        $pdf = pdf::loadView('reportes.verreportes', compact('reservas','horarios'));
+/*         return $pdf->download('reporte-reservas.pdf');//para descargar
+ */        return $pdf->stream('reporte-reservas.pdf');
+    }
+     public function desreporte()
+    {   
+        $reservas = Reserva::all();
+        $horarios = Horario::all();
+        $pdf = pdf::loadView('reportes.desreporte', compact('reservas','horarios'));
+        return $pdf->download('reporte-reservas.pdf');
+    } 
+    
+    
 }

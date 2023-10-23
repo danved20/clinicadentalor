@@ -1,0 +1,152 @@
+/* para el index.blade.php*/
+ *{
+    background-color: #8ecae6;
+    margin: 0;
+    padding: 0;
+}
+.botoncrear{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none; 
+    border: 1px solid #007bff;
+    border-radius: 20px; 
+    transition: background-color 1s, color 1s;
+}
+.botoncrear:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3; 
+    color: #fff;
+}
+.botoncancelar{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #c1121f;
+    color: #fff;
+    text-decoration: none; 
+    border: 1px solid #007bff;
+    border-radius: 20px; 
+    transition: background-color 1s, color 1s;
+    
+}
+.botoncancelar:hover {
+    background-color: #780000; 
+    border-color: black; 
+    color: #fff;
+}
+.container h2{
+    font: 400 3em/1.5 "Neuton"; 
+    color:#0d1321;
+    text-align: center;
+}  
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f8f9fa; 
+    border: 1px solid #ccc;
+}
+#tr{
+    background-color: #03045e;
+    color:#ffff;
+}
+#filas{
+    background-color: #00b4d8;
+}
+
+/* Estilos para las filas de datos */
+.table tbody tr {
+    border-bottom: 1px solid #0056b3; /* Línea divisoria entre filas de datos */
+}
+
+.table tbody tr:hover {
+    background-color: #219ebc; /* Color de fondo al pasar el mouse sobre una fila */
+}
+
+/* Estilos para los botones Editar y Eliminar */
+.botonedit{
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ffbe0b;
+    color: #fff;
+    text-decoration: none; 
+    border: 1px solid #000;
+    border-radius: 15px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+.botonedit:hover {
+    background-color: #fca311; 
+    color: #000; 
+}
+.btneliminar{
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #c1121f;
+    color: #fff;
+    text-decoration: none; 
+    border: 1px solid #000;
+    border-radius: 15px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+.btneliminar:hover {
+    background-color: #780000;
+    color: #fff; 
+}
+
+/*para el create.blade.php*/
+/* Estilos para el contenedor principal del input de fecha */
+.date-input-container {
+    position: relative;
+}
+
+/* Estilos para el contenido emergente */
+.date-picker-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px); /* Coloca el contenido a la derecha del input */
+    background-color: #007bff; /* Fondo azul */
+    color: #fff; /* Texto en color blanco */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+.-con-fondo {
+    background-image: url('/images/diente.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+/* Estilos para mostrar el contenido al hacer clic en el input */
+input[type="date"]:focus + .date-picker-content {
+    display: block;
+}
+/*para el edit.blade.php*/
+.col-sm-2 {
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; 
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+#estilo{
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; 
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Estilos para cuando el cursor pasa sobre el botón */
+.custom-label-button:hover {
+    background-color: #0056b3;
+}

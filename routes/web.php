@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/reservas',ReservaController::class);
 Route::resource('/clientes',ClienteController::class);
 Route::resource('/horarios',HorarioController::class);
- Route::get('/reporte-reservas', 'ReporteController@generarReporte'); 
+Route::get("reporte",[ReservaController::class,'reporte']);
+Route::get("desreporte",[ReservaController::class,'desreporte']);

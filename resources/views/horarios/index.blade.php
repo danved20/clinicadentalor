@@ -39,4 +39,6 @@
         </tr>
         </tbody>
     </table>
+    <a href="{{url('home')}}" class="btn btn-secondary">Regresar</a>
+
 </main>

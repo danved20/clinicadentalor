@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Horario;
@@ -39,6 +39,18 @@ class Clientecontroller extends Controller
         'foto'=>'required|mimes:jpeg,jpg,gif,png|max:10000'
         ]);*/
         //$alumno=new Alumno();
+       /*  $validator = Cliente::make($request->all(), [
+            'nombre' => 'required|string|max:255',
+            'celular' => 'required|numeric',
+            'email' => 'required|email|unique:clientes,email',
+            // Otras reglas de validación según tus necesidades
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect('clientes/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $imageName=time().'.'.$request->foto->extension();
         $request->foto->move(public_path('images'),$imageName);
         $cliente=new Cliente();
@@ -49,7 +61,47 @@ class Clientecontroller extends Controller
 
         $cliente->foto=$imageName;
         $cliente->save();
-        return view("clientes.message",['msg' =>"Registro Guardado"]);
+        return view("clientes.message",['msg' =>"Registro Guardado"]); */
+        $validarnombre = Validator::make($request->all(), [
+            'nombre' => ['required', 'string', 'max:255', 'numeros'],
+        ]);
+        $validarnumero = Validator::make($request->all(), [
+            'celular' => ['required', 'numeric', 'validar_numero'],
+        ]);
+        $validaremail = Validator::make($request->all(), [
+            'email' => ['required', 'email', 'gmail', 'unique:clientes,email'],
+        ]);
+        $validarfeha = Validator::make($request->all(), [
+            'fecha' => ['required', 'date', function ($attribute, $value, $fail) {
+                $currentDate = now();
+            }],
+        ]);
+        
+        if ($validarnombre->fails()) {
+            return view("clientes.message", ['msg' => "el nombre contiene numeros es incorrecto"]);
+        }
+        if ($validarnumero->fails()) {
+            return view("clientes.message", ['msg' => "el numero es incorrecto"]);
+        }
+        if ($validaremail->fails()) {
+            return view("clientes.message", ['msg' => "el Email es incorrecto"]);
+        }
+        if ($validarfeha->fails()) {
+            return view("clientes.message", ['msg' => "La fecha no puede ser mayor a la actual"]);
+        }
+        $imageName = time() . '.' . $request->foto->extension();
+        $request->foto->move(public_path('images'), $imageName);
+        
+        $cliente = new Cliente();
+        $cliente->nombre = $request->input('nombre');
+        $cliente->fecha_nac = $request->input('fecha_nac');
+        $cliente->celular = $request->input('celular');
+        $cliente->email = $request->input('email');
+        $cliente->foto = $imageName;
+        
+        $cliente->save();
+        
+        return view("clientes.message", ['msg' => "Registro Guardado"]);
 
     }
 

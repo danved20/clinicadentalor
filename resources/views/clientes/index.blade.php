@@ -44,8 +44,9 @@
                 </td>
                 @endforeach
             </table>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+<a href="{{url('home')}}" class="btn btn-secondary">Regresar</a>
 </main>
