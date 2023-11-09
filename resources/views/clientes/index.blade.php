@@ -1,6 +1,5 @@
-@extends('layout/template')
-@section('title','Clientes de la Clínica')
-@section('contenido')
+@extends('adminlte::page')
+@section('content')
 <main>
     <div class="col-lg-12"  style="background-color:#fef5f5">
     <h1>Lista de Clientes</h1>
@@ -50,3 +49,5 @@
 </table>
 <a href="{{url('home')}}" class="btn btn-secondary">Regresar</a>
 </main>
+
+@stop

@@ -1,6 +1,5 @@
-@extends('layout/template')
-@section('title','Insertar Clientes')
-@section('contenido')
+@extends('adminlte::page')
+@section('content')
 <main>
     <div class="container py-4">
         <h2>Insertar Clientes</h2>
@@ -52,3 +51,4 @@
     </form>
     </div>
 </main>
+@stop

@@ -1,14 +1,19 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
 
 @section('content')
-<div class="container">
-    <nav>
-        <a href="clientes/">clientes</a> <br>
-        <a href="reservas/">reservas</a> <br>
-        <a href="horarios/">horarios</a> <br>
-        <a href="{{ url('/reporte') }}" target="_blank" class="btn btn-primary">ver Reporte</a>
-        <a href="{{ url('/desreporte') }}" target="_blank" class="btn btn-primary">Descargar Reporte</a>
+    <p>Welcome to this beautiful admin panel.</p>
+@stop
 
-    </nav>
-</div>  
-@endsection
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

@@ -1,6 +1,6 @@
 /* para el index.blade.php*/
  *{
-    background-color: #8ecae6;
+    /* background-color: #8ecae6; */
     margin: 0;
     padding: 0;
 }
@@ -40,12 +40,12 @@
     color:#0d1321;
     text-align: center;
 }  
-.table {
+/* .table {
     width: 100%;
     border-collapse: collapse;
     background-color: #f8f9fa; 
     border: 1px solid #ccc;
-}
+} */
 #tr{
     background-color: #03045e;
     color:#ffff;
@@ -56,11 +56,11 @@
 
 /* Estilos para las filas de datos */
 .table tbody tr {
-    border-bottom: 1px solid #0056b3; /* Línea divisoria entre filas de datos */
+    border-bottom: 1px solid #000; /* Línea divisoria entre filas de datos */
 }
 
 .table tbody tr:hover {
-    background-color: #219ebc; /* Color de fondo al pasar el mouse sobre una fila */
+    background-color: #000; /* Color de fondo al pasar el mouse sobre una fila */
 }
 
 /* Estilos para los botones Editar y Eliminar */
@@ -111,12 +111,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
 }
-.-con-fondo {
-    background-image: url('/images/diente.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 20px;
-}
+
 /* Estilos para mostrar el contenido al hacer clic en el input */
 input[type="date"]:focus + .date-picker-content {
     display: block;
@@ -134,7 +129,7 @@ input[type="date"]:focus + .date-picker-content {
     text-decoration: none;
     font-weight: bold;
 }
-#estilo{
+/* #estilo{
     display: inline-block;
     padding: 10px 20px; 
     background-color: #007bff; 
@@ -145,8 +140,20 @@ input[type="date"]:focus + .date-picker-content {
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-}
+} */
 /* Estilos para cuando el cursor pasa sobre el botón */
 .custom-label-button:hover {
     background-color: #0056b3;
+}
+.imagen{
+    background-image: url('/images/fondo.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    height: 100vh;
+}
+.imagen form {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 15px; 
 }

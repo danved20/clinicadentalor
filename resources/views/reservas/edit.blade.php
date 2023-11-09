@@ -1,6 +1,5 @@
-@extends('layout/template')
-@section('title','Editar Horarios')
-@section('contenido')
+@extends('adminlte::page')
+@section('content')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,8 +11,9 @@
 </head>
 <body>
     <main>
+        <div class="imagen" >
         <div class="container py-4">
-            <h2>Editar Horarios</h2>
+            <h2>Editar Reserva</h2>
             @if ($errors->any())
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <ul>
@@ -31,8 +31,8 @@
                 <label for="fecha" class="col-sm-2 form-check-label" id="estilo">Fecha</label>
                 <div class="col-sm-5">
                     <input type="date" class="form-control" name="fecha" id="fecha" value='{{$reserva->fecha}}' required>
+                </div>
             </div>
-
             <div class="mb-3 row justify-content-center">
                 <label for="horario" class="col-sm-2 col-form-label" id="estilo">Horario</label>
                 <div class="col-sm-5">
@@ -60,15 +60,21 @@
                 <label for="obs" class="col-sm-2 form-check-label" id="estilo"> observacion</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="obs" id="obs" value='obs' value='{{$reserva->obs}}'required>
+                </div>
             </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
-            <button type="submit" class="btn button-successy">Guardar</button>
         </form>
     </div>
     <div class="text-center">
         <a href="{{url('reservas')}}" class="btn btn-secondary">Regresar</a>
     </div>
+</div>
+
     </main>
     
 </body>
 </html>
+
+@stop

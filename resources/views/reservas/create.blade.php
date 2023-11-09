@@ -1,6 +1,5 @@
-@extends('layout/template')
-@section('title','Insertar Reservas')
-@section('contenido')
+@extends('adminlte::page')
+@section('content')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,8 +12,9 @@
 </head>
 <body>
     <main>
+    <div class="imagen" >
         <div class="container py-4">
-            <h2>Formulario de Reservas</h2>
+            <h2>Formulario de Reserva</h2>
             @if ($errors->any())
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <ul>
@@ -76,7 +76,9 @@
             </div>
         </form>
         </div>
+    </div>
     </main>
     
 </body>
 </html>
+@stop

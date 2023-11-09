@@ -1,6 +1,5 @@
-@extends('layout/template')
-@section('title','Reserva de Horario')
-@section('contenido')
+@extends('adminlte::page')
+@section('content')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,21 +11,22 @@
  --></head>
 <body>
     <main>
+    <div class="imagen" >
         <div class="container py=4">
             <h2>Listado de Reserva</h2>
-            <a href="{{('reservas/create')}}" class="botoncrear">Crear nuevo Registro</a>
+            <a href="{{('reservas/create')}}" class="botoncrear">Crear nueva reserva</a>
             <a href="{{url('home')}}" class="botoncancelar">Regresar</a>
         </div>
-        <table class="table table-hover">
-            <thead >
-                <tr classs="colum">
+        <table class="table">
+            <thead classs="colum">
+                <tr >
+                    <th id="tr">#id</th>
                     <th id="tr">Fecha</th>
                     <th id="tr">Horario</th>
                     <th id="tr">Cliente</th>
                     <th id="tr">obs</th>
                     <th id="tr">Editar</th>
                     <th id="tr">Eliminar</th>
-                    <th id="tr">#id</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,7 +52,10 @@
                 </tr>
             </tbody>
         </table>
+    </div>
     </main>
     
 </body>
 </html>
+
+@stop

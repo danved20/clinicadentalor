@@ -57,6 +57,9 @@ class Reservacontroller extends Controller
         ]);
         $fecha = $request->input('fecha');
         $hora = $request->input('hora');
+        if (\Carbon\Carbon::parse($fecha)->dayOfWeek == 0) {
+            return view("reservas.message", ['msg' => "No se pueden hacer reservas los domingos."]);
+        }
         $reservaExistente = Reserva::where('fecha', $fecha)
             ->where('id_horario', $hora)
             ->first();
@@ -122,7 +125,7 @@ class Reservacontroller extends Controller
     {
         $reservas = Reserva::all();
         $horarios = Horario::all();
-        $pdf = pdf::loadView('reportes.verreportes', compact('reservas','horarios'));
+        $pdf = pdf::loadView('reportes.reportesreservas', compact('reservas','horarios'));
 /*         return $pdf->download('reporte-reservas.pdf');//para descargar
  */        return $pdf->stream('reporte-reservas.pdf');
     }
